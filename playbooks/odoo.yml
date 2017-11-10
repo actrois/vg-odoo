@@ -1,0 +1,18 @@
+---
+
+- hosts: odoo
+  tasks:
+    - name: Install Postgres
+      apt: name=postgresql state=installed update_cache=yes
+
+    - name: Get apy key
+      shell: wget -O - https://nightly.odoo.com/odoo.key | apt-key add -
+
+    - name: Add to source list
+      shell: echo "deb http://nightly.odoo.com/11.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list
+
+    - name: Update apt 
+      shell: apt-get update -y
+
+    - name: Install odoo 
+      shell: apt-get install odoo -y
