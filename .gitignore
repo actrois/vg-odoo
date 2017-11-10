@@ -1,3 +1,3 @@
 .vagrant/
-playbooks/*.replay
+playbooks/*.retry
 *.log
